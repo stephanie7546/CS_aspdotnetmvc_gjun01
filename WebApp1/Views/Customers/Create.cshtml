@@ -1,0 +1,16 @@
+﻿@model WebApplication1.Models.Customer
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <span>@Html.DisplayNameFor(m => m.Name): </span> @Html.TextBoxFor(m=>m.Name) <br />
+    <span>生日: </span> @Html.TextBoxFor(m => m.Birthday) <br />
+    <span>照片: </span> <input type="file" name="photo" /><br />
+    <input type="submit" value="新增" />
+}

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApplication1.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("新增產品", "Create")
+
+<table border="1">
+    <tr>
+        <th>編號</th>
+        <th>產品名稱</th>
+        <th>價格</th>
+        <th>照片</th>
+        <th></th>
+    </tr>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.ProductID</td>
+            <td>@p.Name</td>
+            <td>@p.Price</td>
+            <td>
+                <a href="~/Products/GetPhoto/@p.ProductID">
+                    <img src="~/Products/GetPhoto/@p.ProductID" width="200" />
+                </a>
+            </td>
+            <td>
+                @Html.ActionLink("編輯", "Edit", new { id = p.ProductID })
+                @Html.ActionLink("刪除", "Delete", new { id = p.ProductID }, new { onclick = "return confirm('Sure?');" })
+            </td>
+        </tr>
+    }
+</table>
